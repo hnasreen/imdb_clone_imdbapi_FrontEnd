@@ -83,11 +83,11 @@ const MyMovieForm = () => {
 
         try {
             if (id) {
-                await axios.put(`http://localhost:8080/api/${id}`, movie, {
+                await axios.put(`https://imdb-clone-backend-j632.onrender.com/api/${id}`, movie, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
-                await axios.post('http://localhost:8080/api/addMovie', movie, {
+                await axios.post('https://imdb-clone-backend-j632.onrender.com/api/addMovie', movie, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }
