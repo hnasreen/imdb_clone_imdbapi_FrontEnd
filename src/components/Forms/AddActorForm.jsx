@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext.jsx';
 import MovieContext from '../../context/MovieContext.jsx';
 
-
 const AddActorForm = () => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
-    const {actors,setActors}=useContext(MovieContext)
-    
+    const { actors, setActors } = useContext(MovieContext);
+
     const [actor, setActor] = useState({
         name: '',
         gender: '',
@@ -20,11 +19,27 @@ const AddActorForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(''); 
+
+        
+        if (!actor.name || !actor.gender || !actor.dob || !actor.bio) {
+            setError('All fields are required.');
+            return;
+        }
+
+     
+        const today = new Date();
+        const dob = new Date(actor.dob);
+        if (dob > today) {
+            setError('Date of birth must be today or earlier.');
+            return;
+        }
+
         try {
-           const res = await axios.post('http://localhost:8080/api/addActor', actor, {
+            const res = await axios.post('http://localhost:8080/api/addActor', actor, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-           setActors([...actors,res.data.actor])
+            setActors([...actors, res.data.actor]);
             navigate('/add-movie'); 
         } catch (error) {
             setError('Error adding actor');
@@ -37,7 +52,7 @@ const AddActorForm = () => {
             <h2 className="text-light text-center mb-4">Add Actor</h2>
             {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow">
-              
+                
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label text-light">Name</label>
                     <input
@@ -50,7 +65,6 @@ const AddActorForm = () => {
                     />
                 </div>
 
-           
                 <div className="mb-3">
                     <label htmlFor="gender" className="form-label text-light">Gender</label>
                     <select
@@ -66,7 +80,6 @@ const AddActorForm = () => {
                     </select>
                 </div>
 
-         
                 <div className="mb-3">
                     <label htmlFor="dob" className="form-label text-light">Date of Birth</label>
                     <input
@@ -79,7 +92,6 @@ const AddActorForm = () => {
                     />
                 </div>
 
-                
                 <div className="mb-3">
                     <label htmlFor="bio" className="form-label text-light">Bio</label>
                     <textarea
@@ -98,3 +110,4 @@ const AddActorForm = () => {
 };
 
 export default AddActorForm;
+

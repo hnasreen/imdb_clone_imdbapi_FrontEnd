@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext.jsx';
 import MovieContext from '../../context/MovieContext.jsx';
 
-
 const AddProducerForm = () => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
-    const{producers,setProducers} = useContext(MovieContext)
-   
+    const { producers, setProducers } = useContext(MovieContext);
+
     const [producer, setProducer] = useState({
         name: '',
         gender: '',
@@ -20,11 +19,27 @@ const AddProducerForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(''); 
+
+        // Validate fields
+        if (!producer.name || !producer.gender || !producer.dob || !producer.bio) {
+            setError('All fields are required.');
+            return;
+        }
+
+        // Validate date of birth
+        const today = new Date();
+        const dob = new Date(producer.dob);
+        if (dob > today) {
+            setError('Date of birth must be today or earlier.');
+            return;
+        }
+
         try {
-           const res =  await axios.post('http://localhost:8080/api/addProducer', producer, {
+            const res = await axios.post('http://localhost:8080/api/addProducer', producer, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            setProducers([...producers,res.data.producer])
+            setProducers([...producers, res.data.producer]);
             navigate('/add-movie'); 
         } catch (error) {
             setError('Error adding producer');
@@ -50,7 +65,6 @@ const AddProducerForm = () => {
                     />
                 </div>
 
-               
                 <div className="mb-3">
                     <label htmlFor="gender" className="form-label text-light">Gender</label>
                     <select
@@ -66,7 +80,6 @@ const AddProducerForm = () => {
                     </select>
                 </div>
 
-              
                 <div className="mb-3">
                     <label htmlFor="dob" className="form-label text-light">Date of Birth</label>
                     <input
@@ -79,7 +92,6 @@ const AddProducerForm = () => {
                     />
                 </div>
 
-                
                 <div className="mb-3">
                     <label htmlFor="bio" className="form-label text-light">Bio</label>
                     <textarea
@@ -99,6 +111,3 @@ const AddProducerForm = () => {
 };
 
 export default AddProducerForm;
-
-
-

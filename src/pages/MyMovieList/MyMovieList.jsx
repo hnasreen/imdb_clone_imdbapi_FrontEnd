@@ -41,42 +41,48 @@ const MyMovieList = () => {
       <div style={{ marginBottom: '20px' }}>
         <Link to="/add-movie" style={{ color: 'white', border: '1px solid white', borderRadius: '10px', padding: '5px', marginRight: '10px' }}>Add Movie</Link>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '10px' }}>
-        {movies.map((movie) => (
-          <div key={movie._id} className="cards">
-            <Link to={`/movie/${movie._id}`} style={{ textDecoration: "none", color: "white" }}>
-              <img className="cards__img" src={movie.poster} alt={movie.name} />
-              <div className="cards__overlay">
-                <div className="card__title">{movie.name}</div>
-                <div className="card__runtime">{movie.yearOfRelease}</div>
-                <div className="card__description">{movie.plot}</div>
-              </div>
-            </Link>
-            <FaEdit 
-              onClick={() => (window.location.href = `/edit-movie/${movie._id}`)}
-              style={{ 
-                position: 'absolute', 
-                top: '10px', 
-                right: '50px', 
-                cursor: 'pointer', 
-                color: 'white', 
-                fontSize: '20px' 
-              }} 
-            />
-            <FaTrash 
-              onClick={() => handleDelete(movie._id)} 
-              style={{ 
-                position: 'absolute', 
-                top: '10px', 
-                right: '10px', 
-                cursor: 'pointer', 
-                color: 'red', 
-                fontSize: '20px' 
-              }} 
-            />
-          </div>
-        ))}
-      </div>
+      {movies.length === 0 ? ( 
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <p style={{ fontSize: '18px', color: 'lightgray' }}>No movies added yet.</p>
+        </div>
+      ) : (
+        <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '10px' }}>
+          {movies.map((movie) => (
+            <div key={movie._id} className="cards">
+              <Link to={`/movie/${movie._id}`} style={{ textDecoration: "none", color: "white" }}>
+                <img className="cards__img" src={movie.poster} alt={movie.name} />
+                <div className="cards__overlay">
+                  <div className="card__title">{movie.name}</div>
+                  <div className="card__runtime">{movie.yearOfRelease}</div>
+                  <div className="card__description">{movie.plot}</div>
+                </div>
+              </Link>
+              <FaEdit 
+                onClick={() => (window.location.href = `/edit-movie/${movie._id}`)}
+                style={{ 
+                  position: 'absolute', 
+                  top: '10px', 
+                  right: '50px', 
+                  cursor: 'pointer', 
+                  color: 'white', 
+                  fontSize: '20px' 
+                }} 
+              />
+              <FaTrash 
+                onClick={() => handleDelete(movie._id)} 
+                style={{ 
+                  position: 'absolute', 
+                  top: '10px', 
+                  right: '10px', 
+                  cursor: 'pointer', 
+                  color: 'red', 
+                  fontSize: '20px' 
+                }} 
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
