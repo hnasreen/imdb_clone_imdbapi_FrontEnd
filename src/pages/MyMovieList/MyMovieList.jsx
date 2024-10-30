@@ -40,8 +40,6 @@ const MyMovieList = () => {
       <h2>Movies</h2>
       <div style={{ marginBottom: '20px' }}>
         <Link to="/add-movie" style={{ color: 'white', border: '1px solid white', borderRadius: '10px', padding: '5px', marginRight: '10px' }}>Add Movie</Link>
-        <Link to="/addActor" style={{ color: 'white', border: '1px solid white', borderRadius: '10px', padding: '5px', marginRight: '10px' }}>Add Actor</Link>
-        <Link to="/addProducer" style={{ color: 'white', border: '1px solid white', borderRadius: '10px', padding: '5px' }}>Add Producer</Link>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '10px' }}>
         {movies.map((movie) => (

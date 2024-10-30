@@ -2,11 +2,13 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext.jsx';
+import MovieContext from '../../context/MovieContext.jsx';
 
 
 const AddProducerForm = () => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
+    const{producers,setProducers} = useContext(MovieContext)
    
     const [producer, setProducer] = useState({
         name: '',
@@ -19,11 +21,11 @@ const AddProducerForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/addProducer', producer, {
+           const res =  await axios.post('http://localhost:8080/api/addProducer', producer, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            
-            navigate('/movies'); 
+            setProducers([...producers,res.data.producer])
+            navigate('/add-movie'); 
         } catch (error) {
             setError('Error adding producer');
             console.error('Error adding producer', error);
@@ -97,3 +99,6 @@ const AddProducerForm = () => {
 };
 
 export default AddProducerForm;
+
+
+

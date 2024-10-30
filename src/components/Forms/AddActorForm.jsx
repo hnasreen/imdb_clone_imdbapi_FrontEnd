@@ -2,11 +2,13 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext.jsx';
+import MovieContext from '../../context/MovieContext.jsx';
 
 
 const AddActorForm = () => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
+    const {actors,setActors}=useContext(MovieContext)
     
     const [actor, setActor] = useState({
         name: '',
@@ -19,11 +21,11 @@ const AddActorForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/addActor', actor, {
+           const res = await axios.post('http://localhost:8080/api/addActor', actor, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-           
-            navigate('/movies'); 
+           setActors([...actors,res.data.actor])
+            navigate('/add-movie'); 
         } catch (error) {
             setError('Error adding actor');
             console.error('Error adding actor', error);
