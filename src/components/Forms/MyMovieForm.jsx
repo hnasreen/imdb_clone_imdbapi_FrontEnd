@@ -8,7 +8,7 @@ const MyMovieForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
-    const { actors: existingActors, producers: existingProducers, fetchActorsAndProducers } = useContext(MovieContext);
+    const { actors: existingActors, producers: existingProducers } = useContext(MovieContext);
 
     const [movie, setMovie] = useState({
         name: '',

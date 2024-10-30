@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTrash, FaEdit } from "react-icons/fa"; 
 import AuthContext from "../../context/AuthContext.jsx";
 import "../MyMovieList/MyMovieList.css"; 
@@ -8,6 +8,7 @@ import "../MyMovieList/MyMovieList.css";
 const MyMovieList = () => {
   const [movies, setMovies] = useState([]);
   const { token } = useContext(AuthContext);
+  const navigate = useNavigate
 
   const fetchMovies = async () => {
     try {
@@ -58,7 +59,7 @@ const MyMovieList = () => {
                 </div>
               </Link>
               <FaEdit 
-                onClick={() => (window.location.href = `/edit-movie/${movie._id}`)}
+                onClick={() => navigate(`/edit-movie/${movie._id}`)}
                 style={{ 
                   position: 'absolute', 
                   top: '10px', 
