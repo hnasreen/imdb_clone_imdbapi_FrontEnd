@@ -23,7 +23,7 @@ const AddProducerForm = () => {
                 headers: { Authorization: `Bearer ${token}` }
             });
             
-            navigate('/movies'); // Redirect back to the movie form
+            navigate('/movies'); 
         } catch (error) {
             setError('Error adding producer');
             console.error('Error adding producer', error);
@@ -35,7 +35,7 @@ const AddProducerForm = () => {
             <h2 className="text-light text-center mb-4">Add Producer</h2>
             {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow">
-                {/* Name */}
+                
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label text-light">Name</label>
                     <input
@@ -48,7 +48,7 @@ const AddProducerForm = () => {
                     />
                 </div>
 
-                {/* Gender */}
+               
                 <div className="mb-3">
                     <label htmlFor="gender" className="form-label text-light">Gender</label>
                     <select
@@ -64,7 +64,7 @@ const AddProducerForm = () => {
                     </select>
                 </div>
 
-                {/* Date of Birth */}
+              
                 <div className="mb-3">
                     <label htmlFor="dob" className="form-label text-light">Date of Birth</label>
                     <input
@@ -77,7 +77,7 @@ const AddProducerForm = () => {
                     />
                 </div>
 
-                {/* Bio */}
+                
                 <div className="mb-3">
                     <label htmlFor="bio" className="form-label text-light">Bio</label>
                     <textarea

@@ -21,7 +21,7 @@ const MyMovieForm = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        // Fetch movie details if updating
+        
         if (id) {
             const fetchMovie = async () => {
                 try {
@@ -45,7 +45,7 @@ const MyMovieForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Reset error message
+        setError(''); 
 
         try {
             if (id) {
@@ -69,7 +69,7 @@ const MyMovieForm = () => {
             <h2 className="text-light text-center mb-4">{id ? 'Update Movie' : 'Add Movie'}</h2>
             {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow">
-                {/* Movie Name */}
+               
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label text-light">Movie Name</label>
                     <input
@@ -84,7 +84,7 @@ const MyMovieForm = () => {
                     />
                 </div>
 
-                {/* Year of Release */}
+                
                 <div className="mb-3">
                     <label htmlFor="yearOfRelease" className="form-label text-light">Year of Release</label>
                     <input
@@ -99,7 +99,7 @@ const MyMovieForm = () => {
                     />
                 </div>
 
-                {/* Plot */}
+               
                 <div className="mb-3">
                     <label htmlFor="plot" className="form-label text-light">Plot</label>
                     <textarea
@@ -113,7 +113,7 @@ const MyMovieForm = () => {
                     />
                 </div>
 
-                {/* Poster URL */}
+                
                 <div className="mb-3">
                     <label htmlFor="poster" className="form-label text-light">Poster URL</label>
                     <input
@@ -129,7 +129,7 @@ const MyMovieForm = () => {
 
                 {!id && (
                     <>
-                        {/* Producers Field */}
+                        
                         <div className="mb-3">
                             <label htmlFor="producers" className="form-label text-light">Producer(s) <span style={{color:'red'}}> Kindly add the producer to select from the options •</span></label>
                             <select
@@ -161,7 +161,7 @@ const MyMovieForm = () => {
                             </div>
                         </div>
 
-                        {/* Actors Field */}
+                        
                         <div className="mb-3">
                             <label htmlFor="actors" className="form-label text-light">Actor(s) <span style={{color:'red'}}> Kindly add the actor to select from the options •</span></label>
                             <select

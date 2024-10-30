@@ -16,8 +16,8 @@ const Login = () => {
         email,
         password,
       });
-      // console.log(res.data)
-      setToken(res?.data?.token); // Set the token in context
+    
+      setToken(res?.data?.token); 
       if (res.data.success === true) {
         alert(res.data.message);
         navigate("/");

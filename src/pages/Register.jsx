@@ -18,7 +18,7 @@ const Register = () => {
         email,
         password,
       });
-      // console.log(res.data);
+     
       alert(res.data.message);
       if (res.data.success === true) {
         navigate("/login");

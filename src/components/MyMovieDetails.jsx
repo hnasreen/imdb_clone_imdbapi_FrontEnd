@@ -6,7 +6,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 const MyMovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(null); // For handling errors
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -19,11 +19,11 @@ const MyMovieDetails = () => {
       }
     };
     fetchMovie();
-    window.scrollTo(0, 0); // Scroll to top on page load
+    window.scrollTo(0, 0);
   }, [id]);
 
-  if (error) return <p>{error}</p>; // Show error if any
-  if (!movie) return <p>Loading...</p>; // Show loading state
+  if (error) return <p>{error}</p>; 
+  if (!movie) return <p>Loading...</p>; 
 
   return (
     <div className="container mt-4">
