@@ -15,7 +15,7 @@ const MyMovieDetails = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/${id}`);
+        const response = await axios.get(`https://imdb-clone-backend-j632.onrender.com/api/${id}`);
         setMovie(response.data);
       } catch (error) {
         console.error("Error fetching movie details:", error);

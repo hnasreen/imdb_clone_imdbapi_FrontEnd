@@ -24,7 +24,7 @@ const MyMovieForm = () => {
         if (id) {
             const fetchMovie = async () => {
                 try {
-                    const res = await axios.get(`http://localhost:8080/api/${id}`);
+                    const res = await axios.get(`https://imdb-clone-backend-j632.onrender.com/api/${id}`);
                     setMovie({
                         name: res.data.name || '',
                         yearOfRelease: res.data.yearOfRelease || '',

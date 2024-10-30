@@ -8,8 +8,8 @@ export const MovieProvider = ({ children }) => {
     const [producers, setProducers] = useState([]);
 
     const fetchActorsAndProducers = async () => {
-        const actorsRes = await axios.get('http://localhost:8080/api/actors');
-        const producersRes = await axios.get('http://localhost:8080/api/producers');
+        const actorsRes = await axios.get('https://imdb-clone-backend-j632.onrender.com/api/actors');
+        const producersRes = await axios.get('https://imdb-clone-backend-j632.onrender.com/api/producers');
         setActors(actorsRes.data);
         setProducers(producersRes.data);
     };
