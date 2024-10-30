@@ -8,7 +8,7 @@ import "../MyMovieList/MyMovieList.css";
 const MyMovieList = () => {
   const [movies, setMovies] = useState([]);
   const { token } = useContext(AuthContext);
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   const fetchMovies = async () => {
     try {
