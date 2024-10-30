@@ -4,15 +4,15 @@ import Header from "./components/header/Header";
 import Home from "./pages/home/Home.jsx";
 import MovieList from "./components/MovieList/MovieList.jsx";
 import Movie from "./pages/MovieDetails/Movie.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
+import Login from "./pages/Auth/Login.jsx";
+import Register from "./pages/Auth/Register.jsx";
 import MyMovieList from "./pages/MyMovieList/MyMovieList.jsx";
-import MyMovieDetails from "./components/MyMovieDetails.jsx";
-import MyMovieForm from "./components/MyMovieForm.jsx";
+import MyMovieDetails from "./components/MyMovieDetails/MyMovieDetails.jsx";
+import MyMovieForm from "./components/Forms/MyMovieForm.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx"; 
 import { MovieProvider } from "./context/MovieContext.jsx";
-import AddActorForm from "./components/AddActorForm.jsx";
-import AddProducerForm from "./components/AddProducerForm.jsx";
+import AddActorForm from "./components/Forms/AddActorForm.jsx";
+import AddProducerForm from "./components/Forms/AddProducerForm.jsx";
 
 
 function App() {

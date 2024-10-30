@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext.jsx';
-import MovieContext from '../context/MovieContext.jsx';
+import AuthContext from '../../context/AuthContext.jsx';
+import MovieContext from '../../context/MovieContext.jsx';
 
 const MyMovieForm = () => {
     const { id } = useParams();

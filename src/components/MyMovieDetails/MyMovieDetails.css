@@ -1,0 +1,12 @@
+.icon-container {
+  color: grey;
+}
+
+.person-icon {
+  transition: transform 0.3s, color 0.3s;
+}
+
+.icon-container:hover .person-icon {
+  transform: scale(1.2);
+  color: white;
+}

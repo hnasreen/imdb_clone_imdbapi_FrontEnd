@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext.jsx';
+import AuthContext from '../../context/AuthContext.jsx';
 
 
-const AddActorForm = () => {
+const AddProducerForm = () => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
-    
-    const [actor, setActor] = useState({
+   
+    const [producer, setProducer] = useState({
         name: '',
         gender: '',
         dob: '',
@@ -19,43 +19,43 @@ const AddActorForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/addActor', actor, {
+            await axios.post('http://localhost:8080/api/addProducer', producer, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-           
+            
             navigate('/movies'); 
         } catch (error) {
-            setError('Error adding actor');
-            console.error('Error adding actor', error);
+            setError('Error adding producer');
+            console.error('Error adding producer', error);
         }
     };
 
     return (
         <div className="container mt-5">
-            <h2 className="text-light text-center mb-4">Add Actor</h2>
+            <h2 className="text-light text-center mb-4">Add Producer</h2>
             {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow">
-              
+                
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label text-light">Name</label>
                     <input
                         type="text"
                         className="form-control"
                         id="name"
-                        value={actor.name}
-                        onChange={(e) => setActor({ ...actor, name: e.target.value })}
+                        value={producer.name}
+                        onChange={(e) => setProducer({ ...producer, name: e.target.value })}
                         required
                     />
                 </div>
 
-           
+               
                 <div className="mb-3">
                     <label htmlFor="gender" className="form-label text-light">Gender</label>
                     <select
                         className="form-select"
                         id="gender"
-                        value={actor.gender}
-                        onChange={(e) => setActor({ ...actor, gender: e.target.value })}
+                        value={producer.gender}
+                        onChange={(e) => setProducer({ ...producer, gender: e.target.value })}
                         required
                     >
                         <option value="" disabled>Select Gender</option>
@@ -64,15 +64,15 @@ const AddActorForm = () => {
                     </select>
                 </div>
 
-         
+              
                 <div className="mb-3">
                     <label htmlFor="dob" className="form-label text-light">Date of Birth</label>
                     <input
                         type="date"
                         className="form-control"
                         id="dob"
-                        value={actor.dob}
-                        onChange={(e) => setActor({ ...actor, dob: e.target.value })}
+                        value={producer.dob}
+                        onChange={(e) => setProducer({ ...producer, dob: e.target.value })}
                         required
                     />
                 </div>
@@ -84,15 +84,16 @@ const AddActorForm = () => {
                         className="form-control"
                         id="bio"
                         rows="4"
-                        value={actor.bio}
-                        onChange={(e) => setActor({ ...actor, bio: e.target.value })}
+                        value={producer.bio}
+                        onChange={(e) => setProducer({ ...producer, bio: e.target.value })}
+                        required
                     ></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-primary w-100">Add Actor</button>
+                <button type="submit" className="btn btn-primary w-100">Add Producer</button>
             </form>
         </div>
     );
 };
 
-export default AddActorForm;
+export default AddProducerForm;
