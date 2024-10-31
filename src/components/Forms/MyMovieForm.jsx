@@ -87,7 +87,7 @@ const MyMovieForm = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
-                await axios.post(`https://imdb-clone-backend-j632.onrender.com/api/addMovie`, movie, {
+                await axios.post("https://imdb-clone-backend-j632.onrender.com/api/addMovie", movie, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }

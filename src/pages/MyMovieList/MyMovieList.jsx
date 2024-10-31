@@ -12,7 +12,7 @@ const MyMovieList = () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await axios.get(`${process.env.API_BASE_URL}/api/getAllMovie`);
+      const response = await axios.get("https://imdb-clone-backend-j632.onrender.com/api/getAllMovie");
       setMovies(response.data);
     } catch (err) {
       alert(err);
