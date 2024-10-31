@@ -11,7 +11,7 @@ const Home = () => {
     const [ popularMovies, setPopularMovies ] = useState([])
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_APIKEY}&language=en-US`)
+        fetch("https://api.themoviedb.org/3/movie/popular?api_key=b29b9088889d2a7697187a52ed7beb75&language=en-US")
         .then(res => res.json())
         .then(data => setPopularMovies(data.results))
     }, [])
