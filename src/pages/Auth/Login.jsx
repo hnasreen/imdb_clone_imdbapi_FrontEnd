@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://imdb-clone-backend-j632.onrender.com/api/login", {
+      const res = await axios.post(`${process.env.API_BASE_URL}/api/login`, {
         email,
         password,
       });

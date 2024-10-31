@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://imdb-clone-backend-j632.onrender.com/api/register", {
+      const res = await axios.post(`${process.env.API_BASE_URL}/api/register`, {
         name,
         email,
         password,
