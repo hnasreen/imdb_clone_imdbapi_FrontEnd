@@ -24,7 +24,7 @@ const MyMovieForm = () => {
         if (id) {
             const fetchMovie = async () => {
                 try {
-                    const res = await axios.get(`https://imdb-clone-backend-j632.onrender.com/api/${id}`);
+                    const res = await axios.get(`${process.env.API_BASE_URL}/api/${id}`);
                     setMovie({
                         name: res.data.name || '',
                         yearOfRelease: res.data.yearOfRelease || '',
@@ -83,11 +83,11 @@ const MyMovieForm = () => {
 
         try {
             if (id) {
-                await axios.put(`https://imdb-clone-backend-j632.onrender.com/api/${id}`, movie, {
+                await axios.put(`${process.env.API_BASE_URL}/api/${id}`, movie, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
-                await axios.post('https://imdb-clone-backend-j632.onrender.com/api/addMovie', movie, {
+                await axios.post(`${process.env.API_BASE_URL}/api/addMovie`, movie, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }

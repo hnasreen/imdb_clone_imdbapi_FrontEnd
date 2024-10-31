@@ -36,7 +36,7 @@ const AddActorForm = () => {
         }
 
         try {
-            const res = await axios.post('https://imdb-clone-backend-j632.onrender.com/api/addActor', actor, {
+            const res = await axios.post(`${process.env.API_BASE_URL}/api/addActor`, actor, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setActors([...actors, res.data.actor]);
