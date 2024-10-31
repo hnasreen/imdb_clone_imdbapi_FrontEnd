@@ -12,7 +12,7 @@ const MyMovieList = () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await axios.get(`https://imdb-clone-backend-j632.onrender.com/api/getAllMovie`);
+      const response = await axios.get(`${process.env.API_BASE_URL}/api/getAllMovie`);
       setMovies(response.data);
     } catch (err) {
       alert(err);
@@ -25,7 +25,7 @@ const MyMovieList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://imdb-clone-backend-j632.onrender.com/api/deleteMovie/${id}`, {
+      await axios.delete(`${process.env.API_BASE_URL}/api/deleteMovie/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

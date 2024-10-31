@@ -36,7 +36,7 @@ const AddProducerForm = () => {
         }
 
         try {
-            const res = await axios.post(`https://imdb-clone-backend-j632.onrender.com/api/addProducer`, producer, {
+            const res = await axios.post(`${process.env.API_BASE_URL}/api/addProducer`, producer, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setProducers([...producers, res.data.producer]);
