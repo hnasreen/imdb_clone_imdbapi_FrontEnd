@@ -90,7 +90,7 @@ const Register = () => {
         >
           Register
         </button>
-        <Link to="/" style={{ fontSize: "12px", textDecoration: "underline",color:'white' }}>
+        <Link to="/login" style={{ fontSize: "12px", textDecoration: "underline",color:'white' }}>
           Existing User?Login Now!
         </Link>
       </form>
